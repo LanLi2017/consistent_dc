@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 Book-Title,Author,Author 1,Citation,Date
 Against Method,"Feyerabend, P.",Feyerabend,"Feyerabend,1975.0",1975.0
 Changing Order,"Collins, H.M.",Collins,"Collins,1985.0",1985.0
 Exceeding Our Grasp,"Stanford, P.",Stanford,"Stanford,2006.0",2006.0
+=======
+Book Title,Author,Last Name,Citation,First Name,Date
+Against Method,"Feyerabend, P.",Feyerabend,"Feyerabend,1975", P.,1975
+Changing Order,"Collins, H.M.",Collins,"Collins,1985", H.M.,1985
+Exceeding Our Grasp,"Stanford, P.K.",Stanford,"Stanford,2006", P.K.,2006
+Theory of Information,"Shannon, C.E.",Shannon,"Shannon,1992", C.E.,1992
+>>>>>>> user2
