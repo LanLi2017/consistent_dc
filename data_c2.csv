@@ -1,5 +1,17 @@
 Book Title,Author,Date
 Against Method,"Feyerabend, P.", 1975
 Changing Order,"Collins, H.M.", 1985
+<<<<<<< HEAD
 Exceeding Our Grasp,"Stanford P.K", 2006
+=======
+<<<<<<<< HEAD:data_c1.csv
+<<<<<<< HEAD
+Exceeding Our Grasp,"Stanford, P.K", 2006
+=======
+Exceeding Our Grasp,"Stanford, P", 2006
+>>>>>>> user2
+========
+Exceeding Our Grasp, P. Kyle Stanford, 2006
+>>>>>>>> user2:data_c2.csv
+>>>>>>> user2
 Theory of Information, , 1992
