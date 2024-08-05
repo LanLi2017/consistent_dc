@@ -1,9 +1,7 @@
 # consistent_dc
-Problem 1: How Git deals with "conflicts" in CSV files?
-1. Create two branches
-- Upload same data input CSV files
-2. Update data input in OpenRefine with different recipes
-- same operation, different parameters -> different modifications
-- same cell, one with modification, another without 
-3. Push various versions of CSV files to two branches separately 
-4. Merge two branches.
+Git branches merge: user1_col1, user2_col1
+-- Column Schema level: data_col1.csv are modified by
+
+user1_col1 ad user2_col1 in two different ways
+user1_col1: rename column Book Title -> Book
+user2_col1: No changing 
