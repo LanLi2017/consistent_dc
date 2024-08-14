@@ -26,23 +26,13 @@ op2: [place] &rarr; [place] ("normalize the separators in place by value replace
 
 
 4. **Dependency violations**: 
-- [Must]**RC** originated from **write-scope**
+- [Must] **RC** originated from **write-scope**
 - [Might] **Dependent operation**
 
 
 
-### Workfow types
-1. **Linear Processing** occurs if changing **read-scope** of one operation may alter the usability of all the downstream **dependent** operations. Otherwise, it is **Parallel Processing**.
-2. A well-formed workflow should be **no violations** between **Linear** or **Parallel** processings.
+### Data cleaning workflow
+A well-formed **data cleaning workflow** is depicted to represent **data cleaning workflow**. It comprises a sequence of data cleaning operations with **no violations**.
 
-3. **Order** is determined in the finalized **Linear Processing**. **Order** is agnostic across **Parallel Processing**.
-
-
-### Merging conflicts detection and definition 
-1. **Compatible**: (1). Within the **Linear Processing**, the updates applied during a data cleaning process are compatible with the updates applied by a second data cleaning process if no cells within the **read-scope** of any of the data cleaning operations comprising the first process were **written** by the operations comprising the second.
-2. Two data cleaning processes are mutually compatible if each is compatible with the other; otherwise, the processes are in conflict.
-3.The updates made by two mutually compatible data cleaning processes can be merged simply by applying to the original dataset the updates made by either one of the processes followed by the updates made by the other.
-4. Order-agnostic and Order-determined
-5. Commutative and Compatibility 
-
-### Merging conflicts resolving 
+<!-- TODO: what is compatible -->
+<!-- 3. **Order** is determined in the finalized **Linear Processing**. **Order** is agnostic across **Parallel Processing**. -->
