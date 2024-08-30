@@ -5,9 +5,11 @@ We have possibly three levels of the notion of **compatible**: compatible-8a (ve
 
 ### Task: Creating a set of examples as follows: 
 **Ex1-pos:** P1 and P2 **are** compatible-8a &rarr; it makes sense (positive example)
+
 **Ex1-neg:** P1 and P2 are **not** compatible-8a &rarr; it makes sense (negative example)
 
 **Ex2:** P1 and P2 are not compatible-8a &rarr; too strict... &rarr;but compatible-8b &rarr; good!
+
 **Ex2-neg:** P1 and P2 are not compatible-8b &rarr; it makes sense (negative example)!
 
 **Ex3**: P1 and P3 are not compatible-8b &rarr; too strict... &rarr; but compatible-8c &rarr; good!
@@ -16,18 +18,21 @@ We have possibly three levels of the notion of **compatible**: compatible-8a (ve
 **Ex1-pos**: P1 and P2 are compatible-8a → it makes sense (positive example) 
 
 P1: [opx, opx+1, opx+2]
+
 P2: [opy, opy+1]
 
 P1: opx, opx+1,...are operations working on the single column “city”. For instance, we first format “city” into TitleCase(opx), and remove consecutive spaces on “city” (opx+1),  then use regular expressions (opx+2) to strip extra weird characters from the “city”. 
 The Full scope of P1 is [city].
+
 P2: opy, opy+1, opy+2,... are operations working on the single column “state”, For instance, we first trim leading and trailing spaces from column “state” (opy), and acronymize the spellings (opy+1).
 The Full scope of P2 is [state].
 
-P1 and P2 are compatible because: for any operation in P1 and P2, there is NO overlap between their Full scope. 
+**P1 and P2 are compatible because: for any operation in P1 and P2, there is NO overlap between their Full scope.** 
 
 **Ex1-neg**: P1 and P2 are not compatible-8a → it makes sense (negative example)
 
 P1: [opx, opx+1, opx+2]
+
 P2: [opy, opy+1]
 
 P1: 
