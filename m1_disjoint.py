@@ -66,3 +66,6 @@ if __name__ == '__main__':
     pprint(log_changes_p2)
     print(">>>>>END P2>>>>>")
     
+    print("Merging Process:")
+    m1_process(log_changes_p1, log_changes_p2)
+    

@@ -25,3 +25,20 @@ def check_overlaps(c1, c2):
     # Convert the result back to a list
     overlap_list = list(overlap)
     return overlap_list
+
+def m1_process(p1, p2):
+    print(p1)
+    print(p2)
+    conflicts = []
+    for i,op_list in enumerate(p1):
+        op = op_list[0]
+        changes_ = op_list[1]
+        for j, op_list1 in enumerate(p2):
+            op1 = op_list1[0]
+            changes1_ = op_list1[1]
+            print(f'compare p1.op: {op} <> p2.op: {op1}')
+            print(f'changes by p1: {changes_} with changes by p2: {changes1_}')
+            res = check_overlaps(changes_, changes1_)
+            print(res)
+            conflicts.append(res)
+    return conflicts
