@@ -1,0 +1,7 @@
+,event,venue,place,currency,currency_symbol
+0,BREAKFAST,COMMERCIAL,RMS CAMPANIA,Shilings,s
+1,LUNCHEON,SOC;,"BOULEVARD, 66TH AND 67TH STREETS",Dollars,$
+2,DINNER(?),COMM.,"(60 PINE ST., NEW YORK, NY)",Dollars,
+3,dinner,[SOC?];,NEW YORK,Canadian Dollars,
+4,lunch,COM,"PHILADELPHIA, PA.",Deutsche Marks,$
+5,Breakfast,COMMERCIAL,"TAMPA, FL",Dollas,$
