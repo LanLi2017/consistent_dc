@@ -1,0 +1,653 @@
+[
+    {
+        "op": "core/column-split",
+        "engineConfig": {
+            "facets": [],
+            "mode": "row-based"
+        },
+        "columnName": "physical_description",
+        "guessCellType": true,
+        "removeOriginalColumn": false,
+        "mode": "separator",
+        "separator": ";",
+        "regex": false,
+        "maxColumns": 0,
+        "description": "Split column physical_description by separator"
+    },
+    {
+        "op": "core/column-removal",
+        "columnName": "physical_description 5",
+        "description": "Remove column physical_description 5"
+    },
+    {
+        "op": "core/column-addition",
+        "engineConfig": {
+            "facets": [
+                {
+                    "type": "list",
+                    "name": "physical_description 4",
+                    "expression": "value",
+                    "columnName": "physical_description 4",
+                    "invert": true,
+                    "omitBlank": false,
+                    "omitError": false,
+                    "selection": [],
+                    "selectBlank": true,
+                    "selectError": false
+                }
+            ],
+            "mode": "row-based"
+        },
+        "baseColumnName": "physical_description 4",
+        "expression": "grel:value.strip()",
+        "onError": "set-to-blank",
+        "newColumnName": "size",
+        "columnInsertIndex": 18,
+        "description": "Create column size at index 18 based on column physical_description 4 using expression grel:value.strip()"
+    },
+    {
+        "op": "core/column-removal",
+        "columnName": "physical_description 4",
+        "description": "Remove column physical_description 4"
+    },
+    {
+        "op": "core/column-addition",
+        "engineConfig": {
+            "facets": [
+                {
+                    "type": "list",
+                    "name": "physical_description 3",
+                    "expression": "value",
+                    "columnName": "physical_description 3",
+                    "invert": true,
+                    "omitBlank": false,
+                    "omitError": false,
+                    "selection": [],
+                    "selectBlank": true,
+                    "selectError": false
+                },
+                {
+                    "type": "list",
+                    "name": "size",
+                    "expression": "value",
+                    "columnName": "size",
+                    "invert": false,
+                    "omitBlank": false,
+                    "omitError": false,
+                    "selection": [],
+                    "selectBlank": true,
+                    "selectError": false
+                }
+            ],
+            "mode": "row-based"
+        },
+        "baseColumnName": "physical_description 3",
+        "expression": "grel:if(value.contains('X'), 1, 0)",
+        "onError": "set-to-blank",
+        "newColumnName": "flag_pd3",
+        "columnInsertIndex": 17,
+        "description": "Create column flag_pd3 at index 17 based on column physical_description 3 using expression grel:if(value.contains('X'), 1, 0)"
+    },
+    {
+        "op": "core/text-transform",
+        "engineConfig": {
+            "facets": [
+                {
+                    "type": "list",
+                    "name": "physical_description 3",
+                    "expression": "value",
+                    "columnName": "physical_description 3",
+                    "invert": true,
+                    "omitBlank": false,
+                    "omitError": false,
+                    "selection": [],
+                    "selectBlank": true,
+                    "selectError": false
+                },
+                {
+                    "type": "list",
+                    "name": "size",
+                    "expression": "value",
+                    "columnName": "size",
+                    "invert": false,
+                    "omitBlank": false,
+                    "omitError": false,
+                    "selection": [],
+                    "selectBlank": true,
+                    "selectError": false
+                },
+                {
+                    "type": "list",
+                    "name": "flag_pd3",
+                    "expression": "value",
+                    "columnName": "flag_pd3",
+                    "invert": false,
+                    "omitBlank": false,
+                    "omitError": false,
+                    "selection": [
+                        {
+                            "v": {
+                                "v": 1,
+                                "l": "1"
+                            }
+                        }
+                    ],
+                    "selectBlank": false,
+                    "selectError": false
+                }
+            ],
+            "mode": "row-based"
+        },
+        "columnName": "size",
+        "expression": "grel:cells[\"physical_description 3\"].value.strip()",
+        "onError": "keep-original",
+        "repeat": false,
+        "repeatCount": 10,
+        "description": "Text transform on cells in column size using expression grel:cells[\"physical_description 3\"].value.strip()"
+    },
+    {
+        "op": "core/column-removal",
+        "columnName": "flag_pd3",
+        "description": "Remove column flag_pd3"
+    },
+    {
+        "op": "core/column-removal",
+        "columnName": "physical_description 3",
+        "description": "Remove column physical_description 3"
+    },
+    {
+        "op": "core/text-transform",
+        "engineConfig": {
+            "facets": [
+                {
+                    "type": "list",
+                    "name": "physical_description 2",
+                    "expression": "value",
+                    "columnName": "physical_description 2",
+                    "invert": true,
+                    "omitBlank": false,
+                    "omitError": false,
+                    "selection": [],
+                    "selectBlank": true,
+                    "selectError": false
+                }
+            ],
+            "mode": "row-based"
+        },
+        "columnName": "physical_description 2",
+        "expression": "value.toUppercase()",
+        "onError": "keep-original",
+        "repeat": false,
+        "repeatCount": 10,
+        "description": "Text transform on cells in column physical_description 2 using expression value.toUppercase()"
+    },
+    {
+        "op": "core/column-addition",
+        "engineConfig": {
+            "facets": [
+                {
+                    "type": "list",
+                    "name": "physical_description 2",
+                    "expression": "value",
+                    "columnName": "physical_description 2",
+                    "invert": true,
+                    "omitBlank": false,
+                    "omitError": false,
+                    "selection": [],
+                    "selectBlank": true,
+                    "selectError": false
+                }
+            ],
+            "mode": "row-based"
+        },
+        "baseColumnName": "physical_description 2",
+        "expression": "grel:if(value.contains('X'), 1, 0)",
+        "onError": "set-to-blank",
+        "newColumnName": "flag_pd2",
+        "columnInsertIndex": 16,
+        "description": "Create column flag_pd2 at index 16 based on column physical_description 2 using expression grel:if(value.contains('X'), 1, 0)"
+    },
+    {
+        "op": "core/text-transform",
+        "engineConfig": {
+            "facets": [
+                {
+                    "type": "list",
+                    "name": "physical_description 2",
+                    "expression": "value",
+                    "columnName": "physical_description 2",
+                    "invert": true,
+                    "omitBlank": false,
+                    "omitError": false,
+                    "selection": [],
+                    "selectBlank": true,
+                    "selectError": false
+                },
+                {
+                    "type": "list",
+                    "name": "flag_pd2",
+                    "expression": "value",
+                    "columnName": "flag_pd2",
+                    "invert": false,
+                    "omitBlank": false,
+                    "omitError": false,
+                    "selection": [
+                        {
+                            "v": {
+                                "v": 1,
+                                "l": "1"
+                            }
+                        }
+                    ],
+                    "selectBlank": false,
+                    "selectError": false
+                }
+            ],
+            "mode": "row-based"
+        },
+        "columnName": "size",
+        "expression": "grel:cells[\"physical_description 2\"].value.strip()",
+        "onError": "keep-original",
+        "repeat": false,
+        "repeatCount": 10,
+        "description": "Text transform on cells in column size using expression grel:cells[\"physical_description 2\"].value.strip()"
+    },
+    {
+        "op": "core/column-removal",
+        "columnName": "flag_pd2",
+        "description": "Remove column flag_pd2"
+    },
+    {
+        "op": "core/column-removal",
+        "columnName": "physical_description 2",
+        "description": "Remove column physical_description 2"
+    },
+    {
+        "op": "core/text-transform",
+        "engineConfig": {
+            "facets": [
+                {
+                    "type": "list",
+                    "name": "physical_description 1",
+                    "expression": "value",
+                    "columnName": "physical_description 1",
+                    "invert": true,
+                    "omitBlank": false,
+                    "omitError": false,
+                    "selection": [],
+                    "selectBlank": true,
+                    "selectError": false
+                }
+            ],
+            "mode": "row-based"
+        },
+        "columnName": "physical_description 1",
+        "expression": "value.toUppercase()",
+        "onError": "keep-original",
+        "repeat": false,
+        "repeatCount": 10,
+        "description": "Text transform on cells in column physical_description 1 using expression value.toUppercase()"
+    },
+    {
+        "op": "core/column-addition",
+        "engineConfig": {
+            "facets": [
+                {
+                    "type": "list",
+                    "name": "physical_description 1",
+                    "expression": "value",
+                    "columnName": "physical_description 1",
+                    "invert": true,
+                    "omitBlank": false,
+                    "omitError": false,
+                    "selection": [],
+                    "selectBlank": true,
+                    "selectError": false
+                }
+            ],
+            "mode": "row-based"
+        },
+        "baseColumnName": "physical_description 1",
+        "expression": "grel:if(value.contains('X'), 1, 0)",
+        "onError": "set-to-blank",
+        "newColumnName": "flag_pd1",
+        "columnInsertIndex": 15,
+        "description": "Create column flag_pd1 at index 15 based on column physical_description 1 using expression grel:if(value.contains('X'), 1, 0)"
+    },
+    {
+        "op": "core/text-transform",
+        "engineConfig": {
+            "facets": [
+                {
+                    "type": "list",
+                    "name": "physical_description 1",
+                    "expression": "value",
+                    "columnName": "physical_description 1",
+                    "invert": true,
+                    "omitBlank": false,
+                    "omitError": false,
+                    "selection": [],
+                    "selectBlank": true,
+                    "selectError": false
+                },
+                {
+                    "type": "list",
+                    "name": "flag_pd1",
+                    "expression": "value",
+                    "columnName": "flag_pd1",
+                    "invert": false,
+                    "omitBlank": false,
+                    "omitError": false,
+                    "selection": [
+                        {
+                            "v": {
+                                "v": 1,
+                                "l": "1"
+                            }
+                        }
+                    ],
+                    "selectBlank": false,
+                    "selectError": false
+                },
+                {
+                    "type": "list",
+                    "name": "size",
+                    "expression": "value",
+                    "columnName": "size",
+                    "invert": true,
+                    "omitBlank": false,
+                    "omitError": false,
+                    "selection": [],
+                    "selectBlank": true,
+                    "selectError": false
+                }
+            ],
+            "mode": "row-based"
+        },
+        "columnName": "size",
+        "expression": "grel:cells[\"physical_description 1\"].value.strip()+ \"; \" + value",
+        "onError": "keep-original",
+        "repeat": false,
+        "repeatCount": 10,
+        "description": "Text transform on cells in column size using expression grel:cells[\"physical_description 1\"].value.strip()+ \"; \" + value"
+    },
+    {
+        "op": "core/text-transform",
+        "engineConfig": {
+            "facets": [
+                {
+                    "type": "list",
+                    "name": "physical_description 1",
+                    "expression": "value",
+                    "columnName": "physical_description 1",
+                    "invert": true,
+                    "omitBlank": false,
+                    "omitError": false,
+                    "selection": [],
+                    "selectBlank": true,
+                    "selectError": false
+                },
+                {
+                    "type": "list",
+                    "name": "flag_pd1",
+                    "expression": "value",
+                    "columnName": "flag_pd1",
+                    "invert": false,
+                    "omitBlank": false,
+                    "omitError": false,
+                    "selection": [
+                        {
+                            "v": {
+                                "v": 1,
+                                "l": "1"
+                            }
+                        }
+                    ],
+                    "selectBlank": false,
+                    "selectError": false
+                },
+                {
+                    "type": "list",
+                    "name": "size",
+                    "expression": "value",
+                    "columnName": "size",
+                    "invert": false,
+                    "omitBlank": false,
+                    "omitError": false,
+                    "selection": [],
+                    "selectBlank": true,
+                    "selectError": false
+                }
+            ],
+            "mode": "row-based"
+        },
+        "columnName": "size",
+        "expression": "grel:cells[\"physical_description 1\"].value.strip()",
+        "onError": "keep-original",
+        "repeat": false,
+        "repeatCount": 10,
+        "description": "Text transform on cells in column size using expression grel:cells[\"physical_description 1\"].value.strip()"
+    },
+    {
+        "op": "core/column-removal",
+        "columnName": "physical_description 1",
+        "description": "Remove column physical_description 1"
+    },
+    {
+        "op": "core/column-removal",
+        "columnName": "flag_pd1",
+        "description": "Remove column flag_pd1"
+    },
+    {
+        "op": "core/mass-edit",
+        "engineConfig": {
+            "facets": [
+                {
+                    "type": "list",
+                    "name": "size",
+                    "expression": "value",
+                    "columnName": "size",
+                    "invert": false,
+                    "omitBlank": false,
+                    "omitError": false,
+                    "selection": [
+                        {
+                            "v": {
+                                "v": "11/25 X 4/25",
+                                "l": "11/25 X 4/25"
+                            }
+                        }
+                    ],
+                    "selectBlank": false,
+                    "selectError": false
+                }
+            ],
+            "mode": "row-based"
+        },
+        "columnName": "size",
+        "expression": "value",
+        "edits": [
+            {
+                "from": [
+                    "11/25 X 4/25"
+                ],
+                "fromBlank": false,
+                "fromError": false,
+                "to": "11.25 X 4.25"
+            }
+        ],
+        "description": "Mass edit cells in column size"
+    },
+    {
+        "op": "core/mass-edit",
+        "engineConfig": {
+            "facets": [
+                {
+                    "type": "list",
+                    "name": "size",
+                    "expression": "value",
+                    "columnName": "size",
+                    "invert": false,
+                    "omitBlank": false,
+                    "omitError": false,
+                    "selection": [
+                        {
+                            "v": {
+                                "v": "7 1/2 X 5 IN.",
+                                "l": "7 1/2 X 5 IN."
+                            }
+                        }
+                    ],
+                    "selectBlank": false,
+                    "selectError": false
+                }
+            ],
+            "mode": "row-based"
+        },
+        "columnName": "size",
+        "expression": "value",
+        "edits": [
+            {
+                "from": [
+                    "7 1/2 X 5 IN."
+                ],
+                "fromBlank": false,
+                "fromError": false,
+                "to": "7.5 X 5 IN."
+            }
+        ],
+        "description": "Mass edit cells in column size"
+    },
+    {
+        "op": "core/mass-edit",
+        "engineConfig": {
+            "facets": [
+                {
+                    "type": "list",
+                    "name": "size",
+                    "expression": "value",
+                    "columnName": "size",
+                    "invert": false,
+                    "omitBlank": false,
+                    "omitError": false,
+                    "selection": [
+                        {
+                            "v": {
+                                "v": "8 1/2 X 5 1/2 IN. FOLD.",
+                                "l": "8 1/2 X 5 1/2 IN. FOLD."
+                            }
+                        }
+                    ],
+                    "selectBlank": false,
+                    "selectError": false
+                }
+            ],
+            "mode": "row-based"
+        },
+        "columnName": "size",
+        "expression": "value",
+        "edits": [
+            {
+                "from": [
+                    "8 1/2 X 5 1/2 IN. FOLD."
+                ],
+                "fromBlank": false,
+                "fromError": false,
+                "to": "8.5 X 5.5 IN. FOLD."
+            }
+        ],
+        "description": "Mass edit cells in column size"
+    },
+    {
+        "op": "core/mass-edit",
+        "engineConfig": {
+            "facets": [
+                {
+                    "type": "list",
+                    "name": "size",
+                    "expression": "value",
+                    "columnName": "size",
+                    "invert": false,
+                    "omitBlank": false,
+                    "omitError": false,
+                    "selection": [
+                        {
+                            "v": {
+                                "v": "9 X 6 1/2 IN. FOLD.",
+                                "l": "9 X 6 1/2 IN. FOLD."
+                            }
+                        }
+                    ],
+                    "selectBlank": false,
+                    "selectError": false
+                }
+            ],
+            "mode": "row-based"
+        },
+        "columnName": "size",
+        "expression": "value",
+        "edits": [
+            {
+                "from": [
+                    "9 X 6 1/2 IN. FOLD."
+                ],
+                "fromBlank": false,
+                "fromError": false,
+                "to": "9 X 6.5 IN. FOLD."
+            }
+        ],
+        "description": "Mass edit cells in column size"
+    },
+    {
+        "op": "core/text-transform",
+        "engineConfig": {
+            "facets": [],
+            "mode": "row-based"
+        },
+        "columnName": "size",
+        "expression": "jython:import re\npattern = re.compile(r'(\\d+(\\.\\d+)?)\\s*X\\s*(\\d+(\\.\\d+)?)')\nmatches = pattern.findall(value)\nparsed_sizes = ['{}X{}'.format(match[0], match[2]) for match in matches]\nreturn ';'.join(parsed_sizes) if parsed_sizes else value",
+        "onError": "keep-original",
+        "repeat": false,
+        "repeatCount": 10,
+        "description": "Text transform on cells in column size using expression jython:import re\npattern = re.compile(r'(\\d+(\\.\\d+)?)\\s*X\\s*(\\d+(\\.\\d+)?)')\nmatches = pattern.findall(value)\nparsed_sizes = ['{}X{}'.format(match[0], match[2]) for match in matches]\nreturn ';'.join(parsed_sizes) if parsed_sizes else value"
+    },
+    {
+        "op": "core/column-addition",
+        "engineConfig": {
+            "facets": [],
+            "mode": "row-based"
+        },
+        "baseColumnName": "date",
+        "expression": "jython:return value",
+        "onError": "set-to-blank",
+        "newColumnName": "year",
+        "columnInsertIndex": 13,
+        "description": "Create column year at index 13 based on column date using expression jython:return value"
+    },
+    {
+        "op": "core/text-transform",
+        "engineConfig": {
+            "facets": [],
+            "mode": "row-based"
+        },
+        "columnName": "year",
+        "expression": "jython:import re\npattern = r'^\\d{4}'\nmatch = re.search(pattern, value)\nif match:\n   return match.group(0)",
+        "onError": "keep-original",
+        "repeat": false,
+        "repeatCount": 10,
+        "description": "Text transform on cells in column year using expression jython:import re\npattern = r'^\\d{4}'\nmatch = re.search(pattern, value)\nif match:\n   return match.group(0)"
+    },
+    {
+        "op": "core/text-transform",
+        "engineConfig": {
+            "facets": [],
+            "mode": "row-based"
+        },
+        "columnName": "year",
+        "expression": "value.toNumber()",
+        "onError": "keep-original",
+        "repeat": false,
+        "repeatCount": 10,
+        "description": "Text transform on cells in column year using expression value.toNumber()"
+    }
+]
