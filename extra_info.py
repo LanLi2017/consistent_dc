@@ -1,6 +1,6 @@
 from pprint import pprint
 
-from refine import refine
+import refine
 
 
 def diff_schemas(schema_init, schemas:list):

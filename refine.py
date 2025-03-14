@@ -7,8 +7,8 @@ from pprint import pprint
 
 # from requests.packages.urllib3.packages.six.moves import urllib
 
-from .facet import *
-from .history import *
+from refine_folder.facet import *
+from refine_folder.history import *
 
 """
 Client library to communicate with a Refine server.

@@ -178,7 +178,7 @@ def translate_operator_json_to_graph(json_data, schemas):
                 newcolumnName = operator['newColumnName']
                 graph.out_node_names += [
                     {'col_name': newcolumnName, 'label': f'{create_new_node_of_column(newcolumnName)}',
-                     'color': _gen_val_color_}
+                     'color': _color_}
                 ]
 
             elif operator['op'] == 'core/column-split':  # split operation
@@ -188,12 +188,10 @@ def translate_operator_json_to_graph(json_data, schemas):
                 graph.in_node_names += [
                     {'col_name': column_name, 'label': f'{get_column_current_node(column_name)}'}
                 ]
-                # cur_schema = schemas[i]
-                # prev_schema = schemas[i - 1]
                 new_cols = list(set(cur_schema) - set(prev_schema))
                 for col in new_cols:
                     graph.out_node_names += [
-                        {'col_name': col, 'label': f'{create_new_node_of_column(col)}', 'color': _gen_val_color_}
+                        {'col_name': col, 'label': f'{create_new_node_of_column(col)}', 'color': _color_}
                     ]
                 if remove_original_col:
                     remove_col = f'remove-{column_name}'
@@ -203,10 +201,6 @@ def translate_operator_json_to_graph(json_data, schemas):
                     ]
                 else:
                     pass
-                    # graph.out_node_names += [
-                    #     {'col_name': column_name, 'label': f'{create_new_node_of_column(column_name)}',
-                    #      'color': _color_}
-                    # ]
 
             elif operator['op'] == 'core/column-rename':  # split operation
                 old = operator['oldColumnName']
@@ -244,7 +238,7 @@ def translate_operator_json_to_graph(json_data, schemas):
                     {'col_name': base, 'label': f'{lb_base}'}
                 ]
                 graph.out_node_names += [
-                    {'col_name': new, 'label': f'{lb_new}', 'color': _gen_val_color_}
+                    {'col_name': new, 'label': f'{lb_new}', 'color': _color_}
                 ]
 
             elif operator['op'] == 'core/multivalued-cell-join':
@@ -266,7 +260,7 @@ def translate_operator_json_to_graph(json_data, schemas):
                     {'col_name': start, 'label': f'{get_column_current_node(start)}'}
                 ]
                 graph.out_node_names += [
-                    {'col_name': combine, 'label': f'{create_new_node_of_column(combine)}', 'color': _gen_val_color_}
+                    {'col_name': combine, 'label': f'{create_new_node_of_column(combine)}', 'color': _color_}
                 ]
 
             elif operator['op'] == 'core/row-removal':
@@ -293,15 +287,18 @@ def translate_operator_json_to_graph(json_data, schemas):
             elif operator['op'] == 'core/mass-edit':
                 graph.process = [f'({i}) mass-edit']
                 column_name = operator['columnName']
-                graph.in_node_names += [
-                    {'col_name': column_name, 'label': f'{get_column_current_node(column_name)}'}
-                ]
+                read_cols = extract_facet(operator, cur_schema) # add read scope of columns
+                if column_name not in read_cols:
+                    read_cols.append(column_name)
+                
+                for col in read_cols:
+                    graph.in_node_names += [
+                        {'col_name': col, 'label': f'{get_column_current_node(col)}'}
+                    ]
                 graph.out_node_names += [
                     {'col_name': column_name, 'label': f'{create_new_node_of_column(column_name)}',
-                     'color': _custome_v_color}
+                     'color': _color_}
                 ]
-            # TODO
-            # reconciliation
             elif operator['op'] == 'core/recon':
                 graph.process = [f'({i}) reconciliation']
                 column_name = operator['columnName']
@@ -310,63 +307,26 @@ def translate_operator_json_to_graph(json_data, schemas):
                 ]
                 graph.out_node_names += [
                     {'col_name': column_name, 'label': f'{create_new_node_of_column(column_name)}',
-                     'color': _custome_v_color}
+                     'color':_color_}
                 ]
             else:  # normal unary operation
                 try:
+                    # add read columns from facets information
+                    expression = operator['expression']
+                    exp = expression.split(':')[-1]
+                    graph.process = [f'({i}) {exp}']
                     column_name = operator['columnName']
-                    if 'expression' in operator:
-                        expression = operator['expression']
-                        exp_preprocess = expression.split(".")[0]
-                        if exp_preprocess == 'value':
-                            graph.process = [f'({i}) .{expression.split(".")[-1]}']
-                            if expression == 'value.toDate()':
-                                graph.in_node_names += [
-                                    {'col_name': column_name, 'label': f'{get_column_current_node(column_name)}'}
-                                ]
-                                graph.out_node_names += [
-                                    {'col_name': column_name, 'label': f'{create_new_node_of_column(column_name)}',
-                                     'color': _type_con_color_}
-                                ]
-                            elif expression == 'value.toNumber()':
-                                graph.in_node_names += [
-                                    {'col_name': column_name, 'label': f'{get_column_current_node(column_name)}'}
-                                ]
-                                graph.out_node_names += [
-                                    {'col_name': column_name, 'label': f'{create_new_node_of_column(column_name)}',
-                                     'color': _type_con_color_}
-                                ]
-                            else:
-
-                                graph.in_node_names += [
-                                    {'col_name': column_name, 'label': f'{get_column_current_node(column_name)}'}
-                                ]
-                                graph.out_node_names += [
-                                    {'col_name': column_name, 'label': f'{create_new_node_of_column(column_name)}',
-                                     'color': _gen_val_color_}
-                                ]
-                        else:
-                            # value change
-                            exp = expression.split(':')[-1]
-                            graph.process = [f'({i}) {exp}']
-                            graph.in_node_names += [
-                                {'col_name': column_name, 'label': f'{get_column_current_node(column_name)}'}
-                            ]
-                            graph.out_node_names += [
-                                {'col_name': column_name, 'label': f'{create_new_node_of_column(column_name)}',
-                                 'color': _gen_val_color_}
-                            ]
-                    else:
-                        opname = operator['op'].split('/')[-1]
-                        graph.process = [f'({i}) {opname}']
+                    read_cols = extract_facet(operator, cur_schema)
+                    if column_name not in read_cols:
+                        read_cols.append(column_name)
+                    for col in read_cols:
                         graph.in_node_names += [
-                            {'col_name': column_name, 'label': f'{get_column_current_node(column_name)}'}
+                            {'col_name': col, 'label': f'{get_column_current_node(col)}'}
                         ]
-                        graph.out_node_names += [
-                            {'col_name': column_name, 'label': f'{create_new_node_of_column(column_name)}',
-                             'color': _gen_val_color_}
-                        ]
-                        pass
+                    graph.out_node_names += [
+                        {'col_name': column_name, 'label': f'{create_new_node_of_column(column_name)}',
+                            'color': _color_}
+                    ]
                 except KeyError:
                     continue
         else:
@@ -383,7 +343,7 @@ def translate_operator_json_to_graph(json_data, schemas):
                 ]
                 graph.out_node_names += [
                     {'col_name': column_name, 'label': f'{create_new_node_of_column(column_name)}',
-                     'color': _custome_v_color}
+                     'color': _color_}
                 ]
             else:
                 pass
@@ -569,7 +529,7 @@ def main():
     parser.add_argument(
         "--project_id",
         type=int,
-        default=1998304485672,
+        default=2011536917259,
         help='Input Project ID'
     )
     parser.add_argument(
@@ -580,3 +540,7 @@ def main():
     )
     args = parser.parse_args()
     parallel_view_main(args.project_id, args.output)
+
+
+if __name__ == '__main__':
+    main()

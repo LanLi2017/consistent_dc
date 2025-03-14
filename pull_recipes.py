@@ -1,5 +1,7 @@
+import json
+import os
 from call_or import get_operations, list_projects
-from refine import *
+from refine_folder import *
 import re 
 
 def find_projects(pattern=r'menu_p.*'):

@@ -1,0 +1,65 @@
+digraph ORMA {
+	node [fillcolor="#FFFFCC" shape=box style="rounded,filled"]
+	"Book Title.v0" [label="Book Title"]
+	"Book.v0" [label=Book]
+	"Author.v0" [label=Author]
+	"Author.v1" [label=Author]
+	"Date.v0" [label=Date]
+	"Date.v1" [label=Date]
+	"Starred Rows.v0" [label="Starred Rows"]
+	"Starred Rows.v1" [label="Starred Rows"]
+	"Author.v1" [label=Author]
+	"Author 2.v0" [label="Author 2"]
+	"Author 1.v0" [label="Author 1"]
+	"Author 2.v0" [label="Author 2"]
+	"remove-Author 2.v0" [label="remove-Author 2"]
+	"Date.v1" [label=Date]
+	"Author 1.v0" [label="Author 1"]
+	"Citation.v0" [label=Citation]
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(1) column-rename"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(2) single_cell_edit row #3"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(3) value.toNumber()"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(5) row-removal"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(6) column-split"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(7) removal"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(8) column-addition"
+	"Book Title.v0" [label="Book Title" fillcolor="#FFFFCC"]
+	"Book.v0" [label=Book fillcolor="#FFFFCC"]
+	"Author.v0" [label=Author fillcolor="#FFFFCC"]
+	"Author.v1" [label=Author fillcolor="#FFFFCC"]
+	"Date.v0" [label=Date fillcolor="#FFFFCC"]
+	"Date.v1" [label=Date fillcolor="#FFFFCC"]
+	"Starred Rows.v0" [label="Starred Rows" fillcolor="#FFFFCC"]
+	"Starred Rows.v1" [label="Starred Rows" fillcolor="#FFFFCC"]
+	"Author.v1" [label=Author fillcolor="#FFFFCC"]
+	"Author 2.v0" [label="Author 2" fillcolor="#FFFFCC"]
+	"Author 1.v0" [label="Author 1" fillcolor="#FFFFCC"]
+	"Author 2.v0" [label="Author 2" fillcolor="#FFFFCC"]
+	"remove-Author 2.v0" [label="remove-Author 2" fillcolor="#D0D0D0"]
+	"Date.v1" [label=Date fillcolor="#FFFFCC"]
+	"Author 1.v0" [label="Author 1" fillcolor="#FFFFCC"]
+	"Citation.v0" [label=Citation fillcolor="#FFFFCC"]
+	"Book Title.v0" -> "(1) column-rename"
+	"(1) column-rename" -> "Book.v0"
+	"Author.v0" -> "(2) single_cell_edit row #3"
+	"(2) single_cell_edit row #3" -> "Author.v1"
+	"Date.v0" -> "(3) value.toNumber()"
+	"(3) value.toNumber()" -> "Date.v1"
+	"Starred Rows.v0" -> "(5) row-removal"
+	"(5) row-removal" -> "Starred Rows.v1"
+	"Author.v1" -> "(6) column-split"
+	"(6) column-split" -> "Author 2.v0"
+	"(6) column-split" -> "Author 1.v0"
+	"Author 2.v0" -> "(7) removal"
+	"(7) removal" -> "remove-Author 2.v0"
+	"Date.v1" -> "(8) column-addition"
+	"Author 1.v0" -> "(8) column-addition"
+	"(8) column-addition" -> "Citation.v0"
+}

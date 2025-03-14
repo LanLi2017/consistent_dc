@@ -2,8 +2,7 @@ import json
 import os
 from pprint import pprint
 
-from refine import refine 
-# OpenRefineClientPy3/google_refine/refine/refine.py
+import refine 
 
 
 def list_projects():
