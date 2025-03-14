@@ -544,4 +544,6 @@ def main():
 
 if __name__ == '__main__':
     # 1794307527883
+    # or_project_files/ppp_user3 load, try facet information for read_scope
+    # python orma.py --project_id 2190796843367 --output output/ppp_user3.gv
     main()
