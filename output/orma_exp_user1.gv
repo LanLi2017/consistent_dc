@@ -13,8 +13,8 @@ digraph ORMA {
 	"Author 1.v0" [label="Author 1"]
 	"Author 2.v0" [label="Author 2"]
 	"remove-Author 2.v0" [label="remove-Author 2"]
-	"Date.v1" [label=Date]
 	"Author 1.v0" [label="Author 1"]
+	"Date.v1" [label=Date]
 	"Citation.v0" [label=Citation]
 	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
 	"(1) column-rename"
@@ -43,8 +43,8 @@ digraph ORMA {
 	"Author 1.v0" [label="Author 1" fillcolor="#FFFFCC"]
 	"Author 2.v0" [label="Author 2" fillcolor="#FFFFCC"]
 	"remove-Author 2.v0" [label="remove-Author 2" fillcolor="#D0D0D0"]
-	"Date.v1" [label=Date fillcolor="#FFFFCC"]
 	"Author 1.v0" [label="Author 1" fillcolor="#FFFFCC"]
+	"Date.v1" [label=Date fillcolor="#FFFFCC"]
 	"Citation.v0" [label=Citation fillcolor="#FFFFCC"]
 	"Book Title.v0" -> "(1) column-rename"
 	"(1) column-rename" -> "Book.v0"
@@ -59,7 +59,7 @@ digraph ORMA {
 	"(6) column-split" -> "Author 1.v0"
 	"Author 2.v0" -> "(7) removal"
 	"(7) removal" -> "remove-Author 2.v0"
-	"Date.v1" -> "(8) column-addition"
 	"Author 1.v0" -> "(8) column-addition"
+	"Date.v1" -> "(8) column-addition"
 	"(8) column-addition" -> "Citation.v0"
 }

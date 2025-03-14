@@ -1,0 +1,73 @@
+digraph ORMA {
+	node [fillcolor="#FFFFCC" shape=box style="rounded,filled"]
+	"Book Title.v0" [label="Book Title"]
+	"Title.v0" [label=Title]
+	"Date.v0" [label=Date]
+	"Date.v1" [label=Date]
+	"Author.v0" [label=Author]
+	"Author.v1" [label=Author]
+	"Author.v1" [label=Author]
+	"Author.v2" [label=Author]
+	"Author.v2" [label=Author]
+	"Author 1.v0" [label="Author 1"]
+	"Author 2.v0" [label="Author 2"]
+	"Author 1.v0" [label="Author 1"]
+	"Last Name.v0" [label="Last Name"]
+	"Author 2.v0" [label="Author 2"]
+	"First Name.v0" [label="First Name"]
+	"Date.v1" [label=Date]
+	"Last Name.v0" [label="Last Name"]
+	"Citation.v0" [label=Citation]
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(1) column-rename"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(2) value.trim()"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(3) single_cell_edit row #4"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(4) single_cell_edit row #3"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(5) column-split"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(6) column-rename"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(7) column-rename"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(8) column-addition"
+	"Book Title.v0" [label="Book Title" fillcolor="#FFFFCC"]
+	"Title.v0" [label=Title fillcolor="#FFFFCC"]
+	"Date.v0" [label=Date fillcolor="#FFFFCC"]
+	"Date.v1" [label=Date fillcolor="#FFFFCC"]
+	"Author.v0" [label=Author fillcolor="#FFFFCC"]
+	"Author.v1" [label=Author fillcolor="#FFFFCC"]
+	"Author.v1" [label=Author fillcolor="#FFFFCC"]
+	"Author.v2" [label=Author fillcolor="#FFFFCC"]
+	"Author.v2" [label=Author fillcolor="#FFFFCC"]
+	"Author 1.v0" [label="Author 1" fillcolor="#FFFFCC"]
+	"Author 2.v0" [label="Author 2" fillcolor="#FFFFCC"]
+	"Author 1.v0" [label="Author 1" fillcolor="#FFFFCC"]
+	"Last Name.v0" [label="Last Name" fillcolor="#FFFFCC"]
+	"Author 2.v0" [label="Author 2" fillcolor="#FFFFCC"]
+	"First Name.v0" [label="First Name" fillcolor="#FFFFCC"]
+	"Date.v1" [label=Date fillcolor="#FFFFCC"]
+	"Last Name.v0" [label="Last Name" fillcolor="#FFFFCC"]
+	"Citation.v0" [label=Citation fillcolor="#FFFFCC"]
+	"Book Title.v0" -> "(1) column-rename"
+	"(1) column-rename" -> "Title.v0"
+	"Date.v0" -> "(2) value.trim()"
+	"(2) value.trim()" -> "Date.v1"
+	"Author.v0" -> "(3) single_cell_edit row #4"
+	"(3) single_cell_edit row #4" -> "Author.v1"
+	"Author.v1" -> "(4) single_cell_edit row #3"
+	"(4) single_cell_edit row #3" -> "Author.v2"
+	"Author.v2" -> "(5) column-split"
+	"(5) column-split" -> "Author 1.v0"
+	"(5) column-split" -> "Author 2.v0"
+	"Author 1.v0" -> "(6) column-rename"
+	"(6) column-rename" -> "Last Name.v0"
+	"Author 2.v0" -> "(7) column-rename"
+	"(7) column-rename" -> "First Name.v0"
+	"Date.v1" -> "(8) column-addition"
+	"Last Name.v0" -> "(8) column-addition"
+	"(8) column-addition" -> "Citation.v0"
+}
