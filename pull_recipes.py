@@ -1,5 +1,5 @@
 from call_or import get_operations, list_projects
-from refine.refine import *
+from refine import *
 import re 
 
 def find_projects(pattern=r'menu_p.*'):

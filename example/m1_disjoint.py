@@ -2,7 +2,9 @@ from pprint import pprint
 import pandas as pd
 
 from ev import *
-from example.ops import *
+from example.ev import m1_process
+from example.ops import rm_char, value_repl
+from ops import *
 
 
 # Merge Disjoint mode:
@@ -64,7 +66,7 @@ if __name__ == '__main__':
     log_changes_p2 = exe_process(process2, df2)
     print("The executed changes by process P2")
     pprint(log_changes_p2)
-    print(">>>>>END P2>>>>>")
+    print(">>>>>END P2>>>>>") 
     
     print("Merging Process:")
     m1_process(log_changes_p1, log_changes_p2)

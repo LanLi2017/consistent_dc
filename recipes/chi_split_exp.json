@@ -1,0 +1,17 @@
+[
+  {
+    "op": "core/column-split",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DBA Name",
+    "guessCellType": true,
+    "removeOriginalColumn": false,
+    "mode": "separator",
+    "separator": "#",
+    "regex": false,
+    "maxColumns": 0,
+    "description": "Split column DBA Name by separator"
+  }
+]
