@@ -1,0 +1,248 @@
+[
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "SibSp",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column SibSp using expression value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Parch",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Parch using expression value.toNumber()"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Parch",
+    "expression": "jython:return value+cells['SibSp'].value",
+    "onError": "set-to-blank",
+    "newColumnName": "family",
+    "columnInsertIndex": 8,
+    "description": "Create column family at index 8 based on column Parch using expression jython:return value+cells['SibSp'].value"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "SibSp",
+    "description": "Remove column SibSp"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "Parch",
+    "description": "Remove column Parch"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Ticket",
+    "expression": "jython:import re\nv = re.findall(r'\\d+', value)\nreturn ''.join(v)",
+    "onError": "set-to-blank",
+    "newColumnName": "Ticket_num",
+    "columnInsertIndex": 8,
+    "description": "Create column Ticket_num at index 8 based on column Ticket using expression jython:import re\nv = re.findall(r'\\d+', value)\nreturn ''.join(v)"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Name",
+    "expression": "jython:return value.split(',')[0]",
+    "onError": "set-to-blank",
+    "newColumnName": "Name_last",
+    "columnInsertIndex": 4,
+    "description": "Create column Name_last at index 4 based on column Name using expression jython:return value.split(',')[0]"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Name",
+    "expression": "jython:return value.split(',')[1].split('.')[0]",
+    "onError": "set-to-blank",
+    "newColumnName": "Title",
+    "columnInsertIndex": 4,
+    "description": "Create column Title at index 4 based on column Name using expression jython:return value.split(',')[1].split('.')[0]"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Title",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Title using expression value.trim()"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "check_sex",
+          "expression": "value",
+          "columnName": "check_sex",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": 0,
+                "l": "0"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Title",
+    "expression": "jython:title_gender_map = {\n    \"Mr\": \"male\",\n    \"Mrs\": \"female\",\n    \"Miss\": \"female\",\n    \"Ms\": \"female\",\n    \"Mme\": \"female\",\n    \"Mlle\": \"female\",\n    \"Master\": \"male\",\n    \"Rev\": \"male\",\n    \"Don\": \"male\",\n    \"Sir\": \"male\",\n    \"Lady\": \"female\",\n    \"the Countess\": \"female\",\n    \"Capt\": \"male\",\n    \"Col\": \"male\",\n    \"Major\": \"male\",\n    \"Jonkheer\": \"male\"\n}\nreturn title_gender_map[value]==cells['Sex'].value",
+    "onError": "set-to-blank",
+    "newColumnName": "check_sex",
+    "columnInsertIndex": 5,
+    "description": "Create column check_sex at index 5 based on column Title using expression jython:title_gender_map = {\n    \"Mr\": \"male\",\n    \"Mrs\": \"female\",\n    \"Miss\": \"female\",\n    \"Ms\": \"female\",\n    \"Mme\": \"female\",\n    \"Mlle\": \"female\",\n    \"Master\": \"male\",\n    \"Rev\": \"male\",\n    \"Don\": \"male\",\n    \"Sir\": \"male\",\n    \"Lady\": \"female\",\n    \"the Countess\": \"female\",\n    \"Capt\": \"male\",\n    \"Col\": \"male\",\n    \"Major\": \"male\",\n    \"Jonkheer\": \"male\"\n}\nreturn title_gender_map[value]==cells['Sex'].value"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Cabin",
+          "expression": "value",
+          "columnName": "Cabin",
+          "invert": true,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [],
+          "selectBlank": true,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Cabin",
+    "expression": "jython:return str(value)[0]",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Cabin using expression jython:return str(value)[0]"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Fare",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Fare using expression value.toNumber()"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Fare",
+          "expression": "value",
+          "columnName": "Fare",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": 0,
+                "l": "0"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Fare",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "0"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": 8.05
+      }
+    ],
+    "description": "Mass edit cells in column Fare"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Embarked",
+          "expression": "value",
+          "columnName": "Embarked",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [],
+          "selectBlank": true,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Embarked",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          ""
+        ],
+        "fromBlank": true,
+        "fromError": false,
+        "to": "S"
+      }
+    ],
+    "description": "Mass edit cells in column Embarked"
+  }
+]

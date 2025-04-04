@@ -1,0 +1,476 @@
+[
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Sex",
+    "expression": "grel:if(value=='male',0,1)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Sex using expression grel:if(value=='male',0,1)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Embarked",
+    "expression": "jython:if value=='C':\n   return 0\nelif value=='Q':\n   return 1\nelif value=='S':\n   return 2\nelse:\n   return None",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Embarked using expression jython:if value=='C':\n   return 0\nelif value=='Q':\n   return 1\nelif value=='S':\n   return 2\nelse:\n   return None"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Name",
+    "expression": "jython:return value.split(',')[1].split('.')[0]",
+    "onError": "set-to-blank",
+    "newColumnName": "Title",
+    "columnInsertIndex": 4,
+    "description": "Create column Title at index 4 based on column Name using expression jython:return value.split(',')[1].split('.')[0]"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Title",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Title using expression value.trim()"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Title",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Miss",
+          "Ms"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Miss"
+      }
+    ],
+    "description": "Mass edit cells in column Title"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Title",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Mrs",
+          "Mme"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Mrs"
+      }
+    ],
+    "description": "Mass edit cells in column Title"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Title",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Miss",
+          "Mlle"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Miss"
+      }
+    ],
+    "description": "Mass edit cells in column Title"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Title",
+          "expression": "value",
+          "columnName": "Title",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "Col",
+                "l": "Col"
+              }
+            },
+            {
+              "v": {
+                "v": "Don",
+                "l": "Don"
+              }
+            },
+            {
+              "v": {
+                "v": "Rev",
+                "l": "Rev"
+              }
+            },
+            {
+              "v": {
+                "v": "Dr",
+                "l": "Dr"
+              }
+            },
+            {
+              "v": {
+                "v": "Lady",
+                "l": "Lady"
+              }
+            },
+            {
+              "v": {
+                "v": "Major",
+                "l": "Major"
+              }
+            },
+            {
+              "v": {
+                "v": "Jonkheer",
+                "l": "Jonkheer"
+              }
+            },
+            {
+              "v": {
+                "v": "the Countess",
+                "l": "the Countess"
+              }
+            },
+            {
+              "v": {
+                "v": "Sir",
+                "l": "Sir"
+              }
+            },
+            {
+              "v": {
+                "v": "Capt",
+                "l": "Capt"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Title",
+    "expression": "jython:return 'Others'",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Title using expression jython:return 'Others'"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "PassengerId",
+    "description": "Remove column PassengerId"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "Ticket",
+    "description": "Remove column Ticket"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "Name",
+    "description": "Remove column Name"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "Cabin",
+    "description": "Remove column Cabin"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Pclass",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Pclass using expression value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "SibSp",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column SibSp using expression value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Parch",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Parch using expression value.toNumber()"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "SibSp",
+    "expression": "jython:return value+cells['Parch'].value+1",
+    "onError": "set-to-blank",
+    "newColumnName": "FamilySize",
+    "columnInsertIndex": 6,
+    "description": "Create column FamilySize at index 6 based on column SibSp using expression jython:return value+cells['Parch'].value+1"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Title",
+          "expression": "value",
+          "columnName": "Title",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "Master",
+                "l": "Master"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Title",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Master"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": 0
+      }
+    ],
+    "description": "Mass edit cells in column Title"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Title",
+          "expression": "value",
+          "columnName": "Title",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "Miss",
+                "l": "Miss"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Title",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Miss"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": 1
+      }
+    ],
+    "description": "Mass edit cells in column Title"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Title",
+          "expression": "value",
+          "columnName": "Title",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "Mr",
+                "l": "Mr"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Title",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Mr"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": 2
+      }
+    ],
+    "description": "Mass edit cells in column Title"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Title",
+          "expression": "value",
+          "columnName": "Title",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "Mrs",
+                "l": "Mrs"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Title",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Mrs"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": 3
+      }
+    ],
+    "description": "Mass edit cells in column Title"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Title",
+          "expression": "value",
+          "columnName": "Title",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "Others",
+                "l": "Others"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Title",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Others"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "4"
+      }
+    ],
+    "description": "Mass edit cells in column Title"
+  }
+]
