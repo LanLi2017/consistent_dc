@@ -1,0 +1,121 @@
+digraph ORMA {
+	node [fillcolor="#FFFFCC" shape=box style="rounded,filled"]
+	"SibSp.v0" [label=SibSp]
+	"SibSp.v1" [label=SibSp]
+	"Parch.v0" [label=Parch]
+	"Parch.v1" [label=Parch]
+	"SibSp.v1" [label=SibSp]
+	"Parch.v1" [label=Parch]
+	"family.v0" [label=family]
+	"SibSp.v1" [label=SibSp]
+	"remove-SibSp.v0" [label="remove-SibSp"]
+	"Parch.v1" [label=Parch]
+	"remove-Parch.v0" [label="remove-Parch"]
+	"Ticket.v0" [label=Ticket]
+	"Ticket_num.v0" [label=Ticket_num]
+	"Name.v0" [label=Name]
+	"Name_last.v0" [label=Name_last]
+	"Name.v0" [label=Name]
+	"Title.v0" [label=Title]
+	"Title.v0" [label=Title]
+	"Title.v1" [label=Title]
+	"Sex.v0" [label=Sex]
+	"Title.v1" [label=Title]
+	"check_sex.v0" [label=check_sex]
+	"Cabin.v0" [label=Cabin]
+	"Cabin.v1" [label=Cabin]
+	"Fare.v0" [label=Fare]
+	"Fare.v1" [label=Fare]
+	"Fare.v1" [label=Fare]
+	"Fare.v2" [label=Fare]
+	"Embarked.v0" [label=Embarked]
+	"Embarked.v1" [label=Embarked]
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(1) value.toNumber()"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(2) value.toNumber()"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(3) column-addition"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(4) removal"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(5) removal"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(6) column-addition"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(7) column-addition"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(8) column-addition"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(9) value.trim()"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(10) column-addition"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(11) return str(value)[0]"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(12) value.toNumber()"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(13) mass-edit"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(14) mass-edit"
+	"SibSp.v0" [label=SibSp fillcolor="#FFFFCC"]
+	"SibSp.v1" [label=SibSp fillcolor="#FFFFCC"]
+	"Parch.v0" [label=Parch fillcolor="#FFFFCC"]
+	"Parch.v1" [label=Parch fillcolor="#FFFFCC"]
+	"SibSp.v1" [label=SibSp fillcolor="#FFFFCC"]
+	"Parch.v1" [label=Parch fillcolor="#FFFFCC"]
+	"family.v0" [label=family fillcolor="#FFFFCC"]
+	"SibSp.v1" [label=SibSp fillcolor="#FFFFCC"]
+	"remove-SibSp.v0" [label="remove-SibSp" fillcolor="#D0D0D0"]
+	"Parch.v1" [label=Parch fillcolor="#FFFFCC"]
+	"remove-Parch.v0" [label="remove-Parch" fillcolor="#D0D0D0"]
+	"Ticket.v0" [label=Ticket fillcolor="#FFFFCC"]
+	"Ticket_num.v0" [label=Ticket_num fillcolor="#FFFFCC"]
+	"Name.v0" [label=Name fillcolor="#FFFFCC"]
+	"Name_last.v0" [label=Name_last fillcolor="#FFFFCC"]
+	"Name.v0" [label=Name fillcolor="#FFFFCC"]
+	"Title.v0" [label=Title fillcolor="#FFFFCC"]
+	"Title.v0" [label=Title fillcolor="#FFFFCC"]
+	"Title.v1" [label=Title fillcolor="#FFFFCC"]
+	"Sex.v0" [label=Sex fillcolor="#FFFFCC"]
+	"Title.v1" [label=Title fillcolor="#FFFFCC"]
+	"check_sex.v0" [label=check_sex fillcolor="#FFFFCC"]
+	"Cabin.v0" [label=Cabin fillcolor="#FFFFCC"]
+	"Cabin.v1" [label=Cabin fillcolor="#FFFFCC"]
+	"Fare.v0" [label=Fare fillcolor="#FFFFCC"]
+	"Fare.v1" [label=Fare fillcolor="#FFFFCC"]
+	"Fare.v1" [label=Fare fillcolor="#FFFFCC"]
+	"Fare.v2" [label=Fare fillcolor="#FFFFCC"]
+	"Embarked.v0" [label=Embarked fillcolor="#FFFFCC"]
+	"Embarked.v1" [label=Embarked fillcolor="#FFFFCC"]
+	"SibSp.v0" -> "(1) value.toNumber()"
+	"(1) value.toNumber()" -> "SibSp.v1"
+	"Parch.v0" -> "(2) value.toNumber()"
+	"(2) value.toNumber()" -> "Parch.v1"
+	"SibSp.v1" -> "(3) column-addition"
+	"Parch.v1" -> "(3) column-addition"
+	"(3) column-addition" -> "family.v0"
+	"SibSp.v1" -> "(4) removal"
+	"(4) removal" -> "remove-SibSp.v0"
+	"Parch.v1" -> "(5) removal"
+	"(5) removal" -> "remove-Parch.v0"
+	"Ticket.v0" -> "(6) column-addition"
+	"(6) column-addition" -> "Ticket_num.v0"
+	"Name.v0" -> "(7) column-addition"
+	"(7) column-addition" -> "Name_last.v0"
+	"Name.v0" -> "(8) column-addition"
+	"(8) column-addition" -> "Title.v0"
+	"Title.v0" -> "(9) value.trim()"
+	"(9) value.trim()" -> "Title.v1"
+	"Sex.v0" -> "(10) column-addition"
+	"Title.v1" -> "(10) column-addition"
+	"(10) column-addition" -> "check_sex.v0"
+	"Cabin.v0" -> "(11) return str(value)[0]"
+	"(11) return str(value)[0]" -> "Cabin.v1"
+	"Fare.v0" -> "(12) value.toNumber()"
+	"(12) value.toNumber()" -> "Fare.v1"
+	"Fare.v1" -> "(13) mass-edit"
+	"(13) mass-edit" -> "Fare.v2"
+	"Embarked.v0" -> "(14) mass-edit"
+	"(14) mass-edit" -> "Embarked.v1"
+}

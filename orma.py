@@ -113,9 +113,10 @@ def merge_basename(operator, cur_cols):
             return read_cols, separator
 
     # Case 3: Handling concatenated column expressions (e.g., grel:cells.year.value + '-' + cells.month.value)
-    elif "grel:" in exp:
+    elif "grel:" in exp or "jython:" in exp:
         # Extract column names from both `cells.column.value` and `cells["column"].value`
-        column_matches = re.findall(r"cells\.(\w+)\.value|cells\[\"(.*?)\"\]\.value", exp)
+        # column_matches = re.findall(r"cells\.(\w+)\.value|cells\[\"(.*?)\"\]\.value", exp)
+        column_matches = re.findall(r"cells\.(\w+)\.value|cells\[\s*['\"](.*?)['\"]\s*\]\.value", exp)
 
         # Flatten results and remove empty values
         read_cols = list(set(col for match in column_matches for col in match if col))
@@ -127,7 +128,6 @@ def merge_basename(operator, cur_cols):
         # Ensure base_name is included
         if base_name and base_name not in read_cols:
             read_cols.append(base_name)
-
         return read_cols, separator
 
     # Default case: No matches found, return empty list

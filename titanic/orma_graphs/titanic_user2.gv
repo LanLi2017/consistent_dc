@@ -1,0 +1,177 @@
+digraph ORMA {
+	node [fillcolor="#FFFFCC" shape=box style="rounded,filled"]
+	"Sex.v0" [label=Sex]
+	"Sex.v1" [label=Sex]
+	"Embarked.v0" [label=Embarked]
+	"Embarked.v1" [label=Embarked]
+	"Name.v0" [label=Name]
+	"Title.v0" [label=Title]
+	"Title.v0" [label=Title]
+	"Title.v1" [label=Title]
+	"Title.v1" [label=Title]
+	"Title.v2" [label=Title]
+	"Title.v2" [label=Title]
+	"Title.v3" [label=Title]
+	"Title.v3" [label=Title]
+	"Title.v4" [label=Title]
+	"Title.v4" [label=Title]
+	"Title.v5" [label=Title]
+	"PassengerId.v0" [label=PassengerId]
+	"remove-PassengerId.v0" [label="remove-PassengerId"]
+	"Ticket.v0" [label=Ticket]
+	"remove-Ticket.v0" [label="remove-Ticket"]
+	"Name.v0" [label=Name]
+	"remove-Name.v0" [label="remove-Name"]
+	"Cabin.v0" [label=Cabin]
+	"remove-Cabin.v0" [label="remove-Cabin"]
+	"Pclass.v0" [label=Pclass]
+	"Pclass.v1" [label=Pclass]
+	"SibSp.v0" [label=SibSp]
+	"SibSp.v1" [label=SibSp]
+	"Parch.v0" [label=Parch]
+	"Parch.v1" [label=Parch]
+	"Parch.v1" [label=Parch]
+	"SibSp.v1" [label=SibSp]
+	"FamilySize.v0" [label=FamilySize]
+	"Title.v5" [label=Title]
+	"Title.v6" [label=Title]
+	"Title.v6" [label=Title]
+	"Title.v7" [label=Title]
+	"Title.v7" [label=Title]
+	"Title.v8" [label=Title]
+	"Title.v8" [label=Title]
+	"Title.v9" [label=Title]
+	"Title.v9" [label=Title]
+	"Title.v10" [label=Title]
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(1) if(value=='male',0,1)"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(2) 
+   return None"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(3) column-addition"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(4) value.trim()"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(5) mass-edit"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(6) mass-edit"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(7) mass-edit"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(8) return 'Others'"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(9) removal"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(10) removal"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(11) removal"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(12) removal"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(13) value.toNumber()"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(14) value.toNumber()"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(15) value.toNumber()"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(16) column-addition"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(17) mass-edit"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(18) mass-edit"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(19) mass-edit"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(20) mass-edit"
+	node [fillcolor="#CCFFCC" fontname=Helvetica peripheries=1 shape=box style=filled]
+	"(21) mass-edit"
+	"Sex.v0" [label=Sex fillcolor="#FFFFCC"]
+	"Sex.v1" [label=Sex fillcolor="#FFFFCC"]
+	"Embarked.v0" [label=Embarked fillcolor="#FFFFCC"]
+	"Embarked.v1" [label=Embarked fillcolor="#FFFFCC"]
+	"Name.v0" [label=Name fillcolor="#FFFFCC"]
+	"Title.v0" [label=Title fillcolor="#FFFFCC"]
+	"Title.v0" [label=Title fillcolor="#FFFFCC"]
+	"Title.v1" [label=Title fillcolor="#FFFFCC"]
+	"Title.v1" [label=Title fillcolor="#FFFFCC"]
+	"Title.v2" [label=Title fillcolor="#FFFFCC"]
+	"Title.v2" [label=Title fillcolor="#FFFFCC"]
+	"Title.v3" [label=Title fillcolor="#FFFFCC"]
+	"Title.v3" [label=Title fillcolor="#FFFFCC"]
+	"Title.v4" [label=Title fillcolor="#FFFFCC"]
+	"Title.v4" [label=Title fillcolor="#FFFFCC"]
+	"Title.v5" [label=Title fillcolor="#FFFFCC"]
+	"PassengerId.v0" [label=PassengerId fillcolor="#FFFFCC"]
+	"remove-PassengerId.v0" [label="remove-PassengerId" fillcolor="#D0D0D0"]
+	"Ticket.v0" [label=Ticket fillcolor="#FFFFCC"]
+	"remove-Ticket.v0" [label="remove-Ticket" fillcolor="#D0D0D0"]
+	"Name.v0" [label=Name fillcolor="#FFFFCC"]
+	"remove-Name.v0" [label="remove-Name" fillcolor="#D0D0D0"]
+	"Cabin.v0" [label=Cabin fillcolor="#FFFFCC"]
+	"remove-Cabin.v0" [label="remove-Cabin" fillcolor="#D0D0D0"]
+	"Pclass.v0" [label=Pclass fillcolor="#FFFFCC"]
+	"Pclass.v1" [label=Pclass fillcolor="#FFFFCC"]
+	"SibSp.v0" [label=SibSp fillcolor="#FFFFCC"]
+	"SibSp.v1" [label=SibSp fillcolor="#FFFFCC"]
+	"Parch.v0" [label=Parch fillcolor="#FFFFCC"]
+	"Parch.v1" [label=Parch fillcolor="#FFFFCC"]
+	"Parch.v1" [label=Parch fillcolor="#FFFFCC"]
+	"SibSp.v1" [label=SibSp fillcolor="#FFFFCC"]
+	"FamilySize.v0" [label=FamilySize fillcolor="#FFFFCC"]
+	"Title.v5" [label=Title fillcolor="#FFFFCC"]
+	"Title.v6" [label=Title fillcolor="#FFFFCC"]
+	"Title.v6" [label=Title fillcolor="#FFFFCC"]
+	"Title.v7" [label=Title fillcolor="#FFFFCC"]
+	"Title.v7" [label=Title fillcolor="#FFFFCC"]
+	"Title.v8" [label=Title fillcolor="#FFFFCC"]
+	"Title.v8" [label=Title fillcolor="#FFFFCC"]
+	"Title.v9" [label=Title fillcolor="#FFFFCC"]
+	"Title.v9" [label=Title fillcolor="#FFFFCC"]
+	"Title.v10" [label=Title fillcolor="#FFFFCC"]
+	"Sex.v0" -> "(1) if(value=='male',0,1)"
+	"(1) if(value=='male',0,1)" -> "Sex.v1"
+	"Embarked.v0" -> "(2) 
+   return None"
+	"(2) 
+   return None" -> "Embarked.v1"
+	"Name.v0" -> "(3) column-addition"
+	"(3) column-addition" -> "Title.v0"
+	"Title.v0" -> "(4) value.trim()"
+	"(4) value.trim()" -> "Title.v1"
+	"Title.v1" -> "(5) mass-edit"
+	"(5) mass-edit" -> "Title.v2"
+	"Title.v2" -> "(6) mass-edit"
+	"(6) mass-edit" -> "Title.v3"
+	"Title.v3" -> "(7) mass-edit"
+	"(7) mass-edit" -> "Title.v4"
+	"Title.v4" -> "(8) return 'Others'"
+	"(8) return 'Others'" -> "Title.v5"
+	"PassengerId.v0" -> "(9) removal"
+	"(9) removal" -> "remove-PassengerId.v0"
+	"Ticket.v0" -> "(10) removal"
+	"(10) removal" -> "remove-Ticket.v0"
+	"Name.v0" -> "(11) removal"
+	"(11) removal" -> "remove-Name.v0"
+	"Cabin.v0" -> "(12) removal"
+	"(12) removal" -> "remove-Cabin.v0"
+	"Pclass.v0" -> "(13) value.toNumber()"
+	"(13) value.toNumber()" -> "Pclass.v1"
+	"SibSp.v0" -> "(14) value.toNumber()"
+	"(14) value.toNumber()" -> "SibSp.v1"
+	"Parch.v0" -> "(15) value.toNumber()"
+	"(15) value.toNumber()" -> "Parch.v1"
+	"Parch.v1" -> "(16) column-addition"
+	"SibSp.v1" -> "(16) column-addition"
+	"(16) column-addition" -> "FamilySize.v0"
+	"Title.v5" -> "(17) mass-edit"
+	"(17) mass-edit" -> "Title.v6"
+	"Title.v6" -> "(18) mass-edit"
+	"(18) mass-edit" -> "Title.v7"
+	"Title.v7" -> "(19) mass-edit"
+	"(19) mass-edit" -> "Title.v8"
+	"Title.v8" -> "(20) mass-edit"
+	"(20) mass-edit" -> "Title.v9"
+	"Title.v9" -> "(21) mass-edit"
+	"(21) mass-edit" -> "Title.v10"
+}
