@@ -1,0 +1,208 @@
+[
+    {
+        "operation name": "core/text-transform",
+        "description": "Text transform on cells in column Sex using expression grel:if(value=='male',0,1)",
+        "arg": {
+            "expression": "grel:if(value=='male',0,1)"
+        }
+    },
+    {
+        "operation name": "core/text-transform",
+        "description": "Text transform on cells in column Embarked using expression jython:if value=='C':\n   return 0\nelif value=='Q':\n   return 1\nelif value=='S':\n   return 2\nelse:\n   return None",
+        "arg": {
+            "expression": "jython:if value=='C':\n   return 0\nelif value=='Q':\n   return 1\nelif value=='S':\n   return 2\nelse:\n   return None"
+        }
+    },
+    {
+        "operation name": "core/column-addition",
+        "description": "Create column Title at index 4 based on column Name using expression jython:return value.split(',')[1].split('.')[0]",
+        "arg": {
+            "expression": "jython:return value.split(',')[1].split('.')[0]"
+        }
+    },
+    {
+        "operation name": "core/text-transform",
+        "description": "Text transform on cells in column Title using expression value.trim()",
+        "arg": {
+            "expression": "value.trim()"
+        }
+    },
+    {
+        "operation name": "core/mass-edit",
+        "description": "Mass edit cells in column Title",
+        "arg": {
+            "edits": [
+                {
+                    "from": [
+                        "Miss",
+                        "Ms"
+                    ],
+                    "to": "Miss"
+                }
+            ]
+        }
+    },
+    {
+        "operation name": "core/mass-edit",
+        "description": "Mass edit cells in column Title",
+        "arg": {
+            "edits": [
+                {
+                    "from": [
+                        "Mrs",
+                        "Mme"
+                    ],
+                    "to": "Mrs"
+                }
+            ]
+        }
+    },
+    {
+        "operation name": "core/mass-edit",
+        "description": "Mass edit cells in column Title",
+        "arg": {
+            "edits": [
+                {
+                    "from": [
+                        "Miss",
+                        "Mlle"
+                    ],
+                    "to": "Miss"
+                }
+            ]
+        }
+    },
+    {
+        "operation name": "core/text-transform",
+        "description": "Text transform on cells in column Title using expression jython:return 'Others'",
+        "arg": {
+            "expression": "jython:return 'Others'"
+        }
+    },
+    {
+        "operation name": "core/column-removal",
+        "description": "Remove column PassengerId",
+        "arg": {
+            "columnName": "PassengerId"
+        }
+    },
+    {
+        "operation name": "core/column-removal",
+        "description": "Remove column Ticket",
+        "arg": {
+            "columnName": "Ticket"
+        }
+    },
+    {
+        "operation name": "core/column-removal",
+        "description": "Remove column Name",
+        "arg": {
+            "columnName": "Name"
+        }
+    },
+    {
+        "operation name": "core/column-removal",
+        "description": "Remove column Cabin",
+        "arg": {
+            "columnName": "Cabin"
+        }
+    },
+    {
+        "operation name": "core/text-transform",
+        "description": "Text transform on cells in column Pclass using expression value.toNumber()",
+        "arg": {
+            "expression": "value.toNumber()"
+        }
+    },
+    {
+        "operation name": "core/text-transform",
+        "description": "Text transform on cells in column SibSp using expression value.toNumber()",
+        "arg": {
+            "expression": "value.toNumber()"
+        }
+    },
+    {
+        "operation name": "core/text-transform",
+        "description": "Text transform on cells in column Parch using expression value.toNumber()",
+        "arg": {
+            "expression": "value.toNumber()"
+        }
+    },
+    {
+        "operation name": "core/column-addition",
+        "description": "Create column FamilySize at index 6 based on column SibSp using expression jython:return value+cells['Parch'].value+1",
+        "arg": {
+            "expression": "jython:return value+cells['Parch'].value+1"
+        }
+    },
+    {
+        "operation name": "core/mass-edit",
+        "description": "Mass edit cells in column Title",
+        "arg": {
+            "edits": [
+                {
+                    "from": [
+                        "Master"
+                    ],
+                    "to": 0
+                }
+            ]
+        }
+    },
+    {
+        "operation name": "core/mass-edit",
+        "description": "Mass edit cells in column Title",
+        "arg": {
+            "edits": [
+                {
+                    "from": [
+                        "Miss"
+                    ],
+                    "to": 1
+                }
+            ]
+        }
+    },
+    {
+        "operation name": "core/mass-edit",
+        "description": "Mass edit cells in column Title",
+        "arg": {
+            "edits": [
+                {
+                    "from": [
+                        "Mr"
+                    ],
+                    "to": 2
+                }
+            ]
+        }
+    },
+    {
+        "operation name": "core/mass-edit",
+        "description": "Mass edit cells in column Title",
+        "arg": {
+            "edits": [
+                {
+                    "from": [
+                        "Mrs"
+                    ],
+                    "to": 3
+                }
+            ]
+        }
+    },
+    {
+        "operation name": "core/mass-edit",
+        "description": "Mass edit cells in column Title",
+        "arg": {
+            "edits": [
+                {
+                    "from": [
+                        "Others"
+                    ],
+                    "to": "4"
+                }
+            ]
+        }
+    }
+]

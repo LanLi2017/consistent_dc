@@ -313,7 +313,12 @@ def translate_operator_json_to_graph(json_data, schemas):
                 try:
                     # add read columns from facets information
                     expression = operator['expression']
-                    exp = expression.split(':')[-1]
+                    if expression.startswith('value'):
+                        exp = expression
+                    else:
+                        exp_func = expression.split(":")[0]
+                        print(exp_func)
+                        exp = f'{operator["op"].split("/")[-1]}.{exp_func}'
                     graph.process = [f'({i}) {exp}']
                     column_name = operator['columnName']
                     read_cols = extract_facet(operator, cur_schema)
