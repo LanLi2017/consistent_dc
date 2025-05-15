@@ -1,0 +1,75 @@
+[
+    {
+        "op": "core/text-transform",
+        "read_scope": [
+            "event"
+        ],
+        "write_scope": [
+            "event"
+        ],
+        "expression": "value.trim()"
+    },
+    {
+        "op": "core/text-transform",
+        "read_scope": [
+            "event"
+        ],
+        "write_scope": [
+            "event"
+        ],
+        "expression": "value.toUppercase()"
+    },
+    {
+        "op": "core/text-transform",
+        "read_scope": [
+            "venue"
+        ],
+        "write_scope": [
+            "venue"
+        ],
+        "expression": "jython:return value.replace(';', '')"
+    },
+    {
+        "op": "core/mass-edit",
+        "read_scope": [
+            "event"
+        ],
+        "write_scope": [
+            "event"
+        ],
+        "expression": [
+            {
+                "from": [
+                    "DINNER",
+                    "CHRISTMAS DINNER",
+                    "DINNER (?)",
+                    "DINNER TO ABOVE",
+                    "LUNCH AND DINNER",
+                    "THANKSGIVING DINNER"
+                ],
+                "fromBlank": false,
+                "fromError": false,
+                "to": "DINNER"
+            }
+        ]
+    },
+    {
+        "op": "core/column-split",
+        "read_scope": [
+            "physical_description"
+        ],
+        "write_scope": [
+            "physical_description 6",
+            "physical_description 2",
+            "physical_description 8",
+            "physical_description 5",
+            "physical_description 3",
+            "physical_description 4",
+            "physical_description 10",
+            "physical_description 9",
+            "physical_description 1",
+            "physical_description 7"
+        ],
+        "separator": " "
+    }
+]

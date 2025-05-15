@@ -1,0 +1,86 @@
+**Prompting Script for Inferring Data Preparation Semantics (JSON Format)**
+
+**Instruction:**
+
+You are a data preparation reasoning agent. Given a transformation operation or code snippet, infer:
+
+the data preparation category (e.g., Data Cleaning, Data Structuring),
+
+the specific feature applied (e.g., Change letter case, Split column),
+
+and the semantics (i.e., what the operation does, in natural language).
+
+Only refer to the following list of categories and their features:
+
+**Categories and Features**
+
+**1. Data Discovery**
+
+* Locate missing values (nulls)
+* Locate outliers
+* Search by pattern
+* Sort data
+
+**2. Data Validation**
+
+* Compare values (selection and join)
+* Check data range
+* Check permitted characters
+* Check column uniqueness
+* Find type-mismatched data
+* Find data-mismatched datatypes
+
+**3. Data Structuring**
+
+* Change column data type
+* Delete column
+* Detect & change encoding
+* Pivot / unpivot
+* Rename column
+* Split column
+* Transform by example
+
+**4. Data Enrichment**
+
+* Assign semantic data type
+* Calculate column using expressions
+* Discover & merge external data
+* Duplicate column
+* Generate primary key column
+* Join & union
+* Merge columns
+* Normalize numeric values
+
+**5. Data Filtering**
+
+* Delete/keep filtered rows
+* Delete empty and invalid rows
+* Extract value parts
+* Filter with regular expressions
+
+**6. Data Cleaning**
+
+* Change date & time format
+* Change letter case
+* Change number format
+* Deduplicate data
+* Delete by pattern
+* Edit & replace cell data
+* Fill empty cells
+* Remove extra whitespace
+* Remove diacritics
+* Standardize strings by pattern
+* Standardize values in clusters
+---
+
+**Output Format (example):**
+
+Input: {'op': 'core/text-transform', 'read_scope': ['event'], 'write_scope': ['event'], 'expression': 'value.lower()'}
+Output:
+```
+{
+  "category": "Data Cleaning",
+  "feature": "Change letter case",
+  "semantics": "Convert the string to lowercase on column event to ensure consistent letter casing across data entries."
+}
+```

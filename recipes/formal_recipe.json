@@ -1,0 +1,77 @@
+[
+    {
+        "op": "core/text-transform",
+        "read_scope": [
+            "event"
+        ],
+        "write_scope": [
+            "event"
+        ],
+        "expression": "value.trim()"
+    },
+    {
+        "op": "core/text-transform",
+        "read_scope": [
+            "event"
+        ],
+        "write_scope": [
+            "event"
+        ],
+        "expression": "value.toLowercase()"
+    },
+    {
+        "op": "core/column-split",
+        "read_scope": [
+            "physical_description"
+        ],
+        "write_scope": [
+            "physical_description 4",
+            "physical_description 3",
+            "physical_description 2",
+            "physical_description 5",
+            "physical_description 1"
+        ],
+        "separator": ";"
+    },
+    {
+        "op": "core/text-transform",
+        "read_scope": [
+            "venue"
+        ],
+        "write_scope": [
+            "venue"
+        ],
+        "expression": "jython:return value.split(';')[0]"
+    },
+    {
+        "op": "core/mass-edit",
+        "read_scope": [
+            "event"
+        ],
+        "write_scope": [
+            "event"
+        ],
+        "expression": [
+            {
+                "from": [
+                    "dinner",
+                    "dinner (?)"
+                ],
+                "fromBlank": false,
+                "fromError": false,
+                "to": "dinner"
+            }
+        ]
+    },
+    {
+        "op": "core/column-addition",
+        "read_scope": [
+            "physical_description 3",
+            "physical_description 4"
+        ],
+        "write_scope": [
+            "size"
+        ],
+        "expression": "join ([coalesce(cells['physical_description 3'].value,''),coalesce(cells['physical_description 4'].value,'')],'')"
+    }
+]

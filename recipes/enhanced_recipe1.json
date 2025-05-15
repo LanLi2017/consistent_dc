@@ -1,0 +1,90 @@
+[
+    {
+        "op": "core/text-transform",
+        "read_scope": [
+            "event"
+        ],
+        "write_scope": [
+            "event"
+        ],
+        "expression": "value.trim()",
+        "category": "Data Cleaning",
+        "feature": "Remove extra whitespace",
+        "semantics": "Remove leading and trailing whitespace from the 'event' column to ensure data consistency."
+    },
+    {
+        "op": "core/text-transform",
+        "read_scope": [
+            "event"
+        ],
+        "write_scope": [
+            "event"
+        ],
+        "expression": "value.toUppercase()",
+        "category": "Data Cleaning",
+        "feature": "Change letter case",
+        "semantics": "Convert the string to uppercase on column event to ensure consistent letter casing across data entries."
+    },
+    {
+        "op": "core/text-transform",
+        "read_scope": [
+            "venue"
+        ],
+        "write_scope": [
+            "venue"
+        ],
+        "expression": "jython:return value.replace(';', '')",
+        "category": "Data Cleaning",
+        "feature": "Edit & replace cell data",
+        "semantics": "Remove all semicolons from the 'venue' column by replacing them with an empty string, likely to clean up or standardize the data in that column."
+    },
+    {
+        "op": "core/mass-edit",
+        "read_scope": [
+            "event"
+        ],
+        "write_scope": [
+            "event"
+        ],
+        "expression": [
+            {
+                "from": [
+                    "DINNER",
+                    "CHRISTMAS DINNER",
+                    "DINNER (?)",
+                    "DINNER TO ABOVE",
+                    "LUNCH AND DINNER",
+                    "THANKSGIVING DINNER"
+                ],
+                "fromBlank": false,
+                "fromError": false,
+                "to": "DINNER"
+            }
+        ],
+        "category": "Data Cleaning",
+        "feature": "Standardize values in clusters",
+        "semantics": "Consolidate variations of 'DINNER' into a single standardized value, such as merging 'CHRISTMAS DINNER', 'DINNER (?)', 'DINNER TO ABOVE', 'LUNCH AND DINNER', 'THANKSGIVING DINNER' into simply 'DINNER', to ensure consistency."
+    },
+    {
+        "op": "core/column-split",
+        "read_scope": [
+            "physical_description"
+        ],
+        "write_scope": [
+            "physical_description 6",
+            "physical_description 2",
+            "physical_description 8",
+            "physical_description 5",
+            "physical_description 3",
+            "physical_description 4",
+            "physical_description 10",
+            "physical_description 9",
+            "physical_description 1",
+            "physical_description 7"
+        ],
+        "separator": " ",
+        "category": "Data Structuring",
+        "feature": "Split column",
+        "semantics": "Splits the 'physical_description' column into multiple columns based on the space (' ') character as a separator.  This will create new columns named 'physical_description 6', 'physical_description 2', 'physical_description 8', 'physical_description 5', 'physical_description 3', 'physical_description 4', 'physical_description 10', 'physical_description 9', 'physical_description 1', 'physical_description 7', each containing a part of the original string."
+    }
+]

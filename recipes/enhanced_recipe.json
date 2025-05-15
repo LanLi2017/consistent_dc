@@ -1,0 +1,95 @@
+[
+    {
+        "op": "core/text-transform",
+        "read_scope": [
+            "event"
+        ],
+        "write_scope": [
+            "event"
+        ],
+        "expression": "value.trim()",
+        "category": "Data Cleaning",
+        "feature": "Remove extra whitespace",
+        "semantics": "Remove leading and trailing whitespace characters from the values in the 'event' column to ensure data consistency."
+    },
+    {
+        "op": "core/text-transform",
+        "read_scope": [
+            "event"
+        ],
+        "write_scope": [
+            "event"
+        ],
+        "expression": "value.toLowercase()",
+        "category": "Data Cleaning",
+        "feature": "Change letter case",
+        "semantics": "Convert the string to lowercase on column event to ensure consistent letter casing across data entries."
+    },
+    {
+        "op": "core/column-split",
+        "read_scope": [
+            "physical_description"
+        ],
+        "write_scope": [
+            "physical_description 4",
+            "physical_description 3",
+            "physical_description 2",
+            "physical_description 5",
+            "physical_description 1"
+        ],
+        "separator": ";",
+        "category": "Data Structuring",
+        "feature": "Split column",
+        "semantics": "Split the 'physical_description' column into multiple columns based on the ';' separator. This divides the original column's data into distinct fields based on the delimiter."
+    },
+    {
+        "op": "core/text-transform",
+        "read_scope": [
+            "venue"
+        ],
+        "write_scope": [
+            "venue"
+        ],
+        "expression": "jython:return value.split(';')[0]",
+        "category": "Data Structuring",
+        "feature": "Split column",
+        "semantics": "Splits the 'venue' column based on the delimiter ';', and keeps the first element of the split string."
+    },
+    {
+        "op": "core/mass-edit",
+        "read_scope": [
+            "event"
+        ],
+        "write_scope": [
+            "event"
+        ],
+        "expression": [
+            {
+                "from": [
+                    "dinner",
+                    "dinner (?)"
+                ],
+                "fromBlank": false,
+                "fromError": false,
+                "to": "dinner"
+            }
+        ],
+        "category": "Data Cleaning",
+        "feature": "Edit & replace cell data",
+        "semantics": "Replace occurrences of 'dinner' and 'dinner (?)' with 'dinner' in the 'event' column, effectively standardizing the values."
+    },
+    {
+        "op": "core/column-addition",
+        "read_scope": [
+            "physical_description 3",
+            "physical_description 4"
+        ],
+        "write_scope": [
+            "size"
+        ],
+        "expression": "join ([coalesce(cells['physical_description 3'].value,''),coalesce(cells['physical_description 4'].value,'')],'')",
+        "category": "Data Structuring",
+        "feature": "Merge columns",
+        "semantics": "Combine the content of 'physical_description 3' and 'physical_description 4' columns, handling potential null values by replacing them with empty strings, to create a new 'size' column containing the merged data."
+    }
+]
